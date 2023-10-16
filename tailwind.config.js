@@ -7,6 +7,11 @@ module.exports = {
   ],
   theme: {
     extend: {
+      animation: {
+        bounceTwice: 'bounceTwice 0.7s',
+        curtainEnter: 'curtainEnter 0.3s',
+        curtainExit: 'curtainExit 0.3s',
+      },
       keyframes: {
         bounceTwice: {
           '0%': {
@@ -34,10 +39,15 @@ module.exports = {
             animationTimingFunction: 'cubic-bezier(0, 0, 0.2, 0.5)',
           },
         },
+        curtainEnter: {
+          '0%': { transform: 'translateY(-50%)', opacity: 0 },
+          '100%': { transform: 'translateY(0)', opacity: 1 },
+        },
+        curtainExit: {
+          '0%': { transform: 'translateY(0)', opacity: 1 },
+          '100%': { transform: 'translateY(-50%)', opacity: 0 },
+        },
       },
-    },
-    animation: {
-      bounceTwice: 'bounceTwice 1s',
     },
   },
   plugins: [],

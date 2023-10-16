@@ -1,75 +1,134 @@
+'use client';
+
+import { Transition } from '@headlessui/react';
+
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-function NavBar() {
+const links = [
+  {
+    label: 'Projects',
+    route: '#projects',
+  },
+  {
+    label: 'Skills',
+    route: '#skills',
+  },
+  {
+    label: 'About',
+    route: '#about',
+  },
+  {
+    label: 'Contact',
+    route: '#contact',
+  },
+];
+
+export function NavBar() {
   const [navbar, setNavbar] = useState(false);
-  return (
-    <div>
-      <nav className='w-full md:w-3/4 md:mx-auto md:rounded-bl-xl bg-black/40 backdrop-blur-sm fixed top-0 left-0 right-0 z-10'>
-        <div className='justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8'>
-          <div>
-            <div className='flex items-center justify-between py-3 md:py-5 md:block'>
-              {/* LOGO */}
-              <Link href='/'>
-                <h2 className='text-2xl text-cyan-600 font-bold'>Logo</h2>
-              </Link>
+  const [scrollDir, setScrollDir] = useState('down');
+  const [scrollY, setScrollY] = useState(0);
 
-              {/* HAMBURGER BUTTON FOR MOBILE */}
-              <div className='md:hidden'>
-                <button
-                  className='text-gray-700 rounded-md outline-none'
-                  onClick={() => setNavbar(!navbar)}
-                >
-                  {navbar ? (
-                    <Image src='/close.svg' width={30} height={30} alt='logo' />
-                  ) : (
-                    <Image
-                      src='/hamburger-menu.svg'
-                      width={30}
-                      height={30}
-                      alt='logo'
-                      className='focus:border-none active:border-none'
-                    />
-                  )}
-                </button>
-              </div>
+  useEffect(() => {
+    const threshold = 0;
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+
+    const updateScrollDir = () => {
+      const currentScrollY = window.scrollY;
+
+      if (Math.abs(currentScrollY - lastScrollY) < threshold) {
+        ticking = false;
+        return;
+      }
+
+      setScrollY(currentScrollY);
+      setScrollDir(currentScrollY > lastScrollY ? 'down' : 'up');
+      lastScrollY = currentScrollY;
+      ticking = false;
+    };
+
+    const onScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateScrollDir);
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', onScroll);
+
+    return () => window.removeEventListener('scroll', onScroll);
+  }, [scrollDir, scrollY]);
+
+  {
+    if (scrollY === 0 || scrollDir === 'up') {
+      return (
+        <nav
+          className={`w-full md:w-3/4 md:mx-auto md:rounded-bl-xl fixed top-0 left-0 right-0 z-10 bg-black/40 backdrop-blur-sm`}
+        >
+          <div className='flex justify-between items-center h-16'>
+            {/* LOGO */}
+            <Link href='/' className='ml-4'>
+              <h2 className='text-2xl text-cyan-600 font-bold'>Logo</h2>
+            </Link>
+
+            {/* HAMBURGER BUTTON FOR MOBILE */}
+            <div className='md:hidden mr-4'>
+              <button
+                className='text-gray-700 rounded-md outline-none'
+                onClick={() => setNavbar(!navbar)}
+              >
+                {navbar ? (
+                  <Image
+                    src='/img/xmark-icon.svg'
+                    width='0'
+                    height='0'
+                    alt='logo'
+                    className='w-6 h-auto'
+                  />
+                ) : (
+                  <Image
+                    src='/img/menu-icon.svg'
+                    width='0'
+                    height='0'
+                    alt='logo'
+                    className='focus:border-none active:border-none w-6 h-auto'
+                  />
+                )}
+              </button>
             </div>
           </div>
-          <div>
-            <div
-              className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${
-                navbar ? 'p-12 md:p-0 block' : 'hidden'
-              }`}
+
+          {/* Navigation Links */}
+          <Transition
+            show={navbar}
+            enter='transition-transform duration-300 transform ease-out'
+            enterFrom='translate-y-[-30%] opacity-0'
+            enterTo='translate-y-0 opacity-100'
+            leave='transition-transform duration-100 transform ease-in'
+            leaveFrom='translate-y-0 opacity-100'
+            leaveTo='translate-y-[30%] opacity-0'
+          >
+            <ul
+              className={`h-screen flex flex-col justify-center items-center pb-44 gap-4 text-white text-xl`}
             >
-              <ul className='h-screen md:h-auto items-center justify-center md:flex'>
-                <li className='pb-6 text-xl text-white py-2 md:px-6 text-center border-b-2 md:border-b-0  hover:bg-purple-900  border-purple-900  md:hover:text-black md:hover:bg-transparent'>
-                  <Link href='#projects' onClick={() => setNavbar(!navbar)}>
-                    Projects
+              {links.map(({ label, route }) => (
+                <li
+                  key={route}
+                  className='flex py-4 md:px-6 border-b-2 w-32 justify-center hover:text-black hover:bg-transparent hover:border-black'
+                >
+                  <Link href={route} onClick={() => setNavbar(!navbar)}>
+                    {label}
                   </Link>
                 </li>
-                <li className='pb-6 text-xl text-white py-2 px-6 text-center  border-b-2 md:border-b-0  hover:bg-purple-600  border-purple-900  md:hover:text-black md:hover:bg-transparent'>
-                  <Link href='#skills' onClick={() => setNavbar(!navbar)}>
-                    Skills
-                  </Link>
-                </li>
-                <li className='pb-6 text-xl text-white py-2 px-6 text-center  border-b-2 md:border-b-0  hover:bg-purple-600  border-purple-900  md:hover:text-black md:hover:bg-transparent'>
-                  <Link href='#about' onClick={() => setNavbar(!navbar)}>
-                    About
-                  </Link>
-                </li>
-                <li className='pb-6 text-xl text-white py-2 px-6 text-center  border-b-2 md:border-b-0  hover:bg-purple-600  border-purple-900  md:hover:text-black md:hover:bg-transparent'>
-                  <Link href='#contact' onClick={() => setNavbar(!navbar)}>
-                    Contact
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </nav>
-    </div>
-  );
+              ))}
+            </ul>
+          </Transition>
+        </nav>
+      );
+    }
+  }
 }
 
 export default NavBar;
