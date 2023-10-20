@@ -43,7 +43,7 @@ const ScrollToTopButton = () => {
         isVisible
           ? `opacity-90 hover:opacity-100 scale-100 animate-bounceTwice shadow-md`
           : 'opacity-0'
-      } fixed bottom-5 right-5 z-50 md:right-32 lg:right-44 xl:right-52 2xl:right-60 p-3 bg-black/90 hover:bg-black text-white rounded-full transform md:hover:scale-110 duration-300 ease-in-out`}
+      } fixed bottom-5 right-5 z-50 md:right-32 lg:right-44 xl:right-52 2xl:right-60 p-3 bg-black/90 hover:bg-black text-white rounded-full transform md:hover:scale-105 duration-300 ease-in-out`}
     >
       <svg
         xmlns='http://www.w3.org/2000/svg'
