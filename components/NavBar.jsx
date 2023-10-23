@@ -26,7 +26,7 @@ const links = [
   },
 ];
 
-export function NavBar() {
+export default function NavBar() {
   const [navbar, setNavbar] = useState(false);
   const [scrollDir, setScrollDir] = useState('down');
   const [scrollY, setScrollY] = useState(0);
@@ -132,5 +132,3 @@ export function NavBar() {
     }
   }
 }
-
-export default NavBar;

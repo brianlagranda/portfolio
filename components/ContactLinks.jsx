@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
-export function ContactLinks() {
+export default function ContactLinks() {
   return (
     <>
       <Link href='https://www.linkedin.com/in/brianlagranda/'>
@@ -36,6 +36,4 @@ export function ContactLinks() {
     </>
   );
 }
-
-export default ContactLinks;
 

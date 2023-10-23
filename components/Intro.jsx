@@ -1,6 +1,10 @@
-import Button from './Button';
+'use client';
 
-export function Intro() {
+import Button from './Button';
+import { useRouter } from 'next/navigation';
+
+export default function Intro() {
+  const router = useRouter();
   return (
     <section id='intro' className='mt-16'>
       <div className='rounded-full bg-emerald-500/90 blur-3xl h-20 w-20 ml-auto mr-10'></div>
@@ -13,11 +17,15 @@ export function Intro() {
       <p className='my-8 text-xl'>
         1 year of experience developing web apps from scratch.
       </p>
-      <Button text='Resume'></Button>
-      <div className='rounded-full bg-emerald-500/80 blur-3xl h-20 w-20 flex self-end'></div>
+      <Button
+        text='Resume'
+        onClick={() =>
+          router.push(
+            'https://drive.google.com/file/d/1lRV-emE6UQbvedsJoysIiPhxSrlU258Z/view?usp=sharing'
+          )
+        }
+      ></Button>
+      <div className='rounded-full  bg-emerald-500/80 blur-3xl h-20 w-20 flex self-end'></div>
     </section>
   );
 }
-
-export default Intro;
-

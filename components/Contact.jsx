@@ -1,6 +1,6 @@
 import ContactLinks from './ContactLinks';
 
-export function Contact() {
+export default function Contact() {
   return (
     <section key='contact' id='contact' className='text-center text-6xl'>
       <h2 className=' pr-14'>Get in</h2>
@@ -14,6 +14,3 @@ export function Contact() {
     </section>
   );
 }
-
-export default Contact;
-
