@@ -40,8 +40,8 @@ module.exports = {
           },
         },
         curtainEnter: {
-          '0%': { transform: 'translateY(-50%)', opacity: 0 },
-          '100%': { transform: 'translateY(0)', opacity: 1 },
+          '0%': { transform: 'translateY(-50%)' },
+          '100%': { transform: 'translateY(0)' },
         },
         curtainExit: {
           '0%': { transform: 'translateY(0)', opacity: 1 },

@@ -4,6 +4,8 @@ import Projects from '../components/Projects';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
 
+import Link from 'next/link';
+
 import ScrollToTopButton from '../components/ScrollToTopButton';
 
 const sectionIds = [

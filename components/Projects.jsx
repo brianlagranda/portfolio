@@ -1,55 +1,96 @@
+'use client';
+
 import Image from 'next/image';
+import { useState } from 'react';
 
 const projects = [
   {
     id: crypto.randomUUID(),
-    title: 'Tecnological',
+    title: 'Blog',
     skills: ['❤', '🧡', '💛', '💚', '💙', '💜'],
     img: '/img/projects/tecnological.png',
+    alt: 'Ecommerce project Tecnological',
+    urlDeploy: 'urlDeploy',
+    urlGithub: 'urlGithub',
+  },
+  {
+    id: crypto.randomUUID(),
+    title: 'Tecnological',
+    skills: ['❤', '🧡', '💛', '💚'],
+    img: '/img/projects/tecnological.png',
+    alt: 'Ecommerce project Tecnological',
+    urlDeploy: 'urlDeploy',
+    urlGithub: 'urlGithub',
+  },
+  {
+    id: crypto.randomUUID(),
+    title: 'Landing Page',
+    skills: ['❤', '🧡', '💚', '💙', '💜'],
+    img: '/img/projects/tecnological.png',
+    alt: 'Ecommerce project Tecnological',
     urlDeploy: 'urlDeploy',
     urlGithub: 'urlGithub',
   },
 ];
 
 export default function Projects() {
+  const [activeProject, setActiveProject] = useState(null);
+
+  const handleCheckboxChange = id => {
+    if (activeProject === id) {
+      setActiveProject(null);
+    } else {
+      setActiveProject(id);
+    }
+  };
+
   return (
-    <>
-      {projects.map(({ id, title, skills, img, urlDeploy, urlGithub }) => (
-        <div
+    <section
+      id='projects'
+      className='w-full mt-24 flex flex-wrap gap-10 justify-center'
+    >
+      {projects.map(({ id, title, skills, img, alt, urlDeploy, urlGithub }) => (
+        <label
           key={id}
-          className='max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700'
+          className={`group relative overflow-hidden rounded-md shadow-2xl`}
         >
-          <a href='#'>
+          <input
+            type='checkbox'
+            className=' hidden h-full'
+            checked={activeProject === id}
+            onChange={() => handleCheckboxChange(id)}
+          />
+          <div className={`project ${activeProject === id ? 'active' : ''}`}>
             <Image
-              width='500'
-              height='500'
-              priority={true}
+              width={500}
+              height={500}
               style={{ objectFit: 'contain' }}
-              className='rounded-t-lg'
+              className='rounded-lg ease-in-out duration-500 group-hover:rotate-6 group-hover:scale-125'
               src={img}
-              alt='Ecommerce project Tecnological'
+              alt={alt}
             />
-          </a>
-          <div className='p-5'>
-            <a href='#'>
-              <h5 className='mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white'>
-                {title}
-              </h5>
-            </a>
-            <p className='mb-3 font-normal text-gray-700 dark:text-gray-400'>
-              Here are the biggest enterprise technology acquisitions of 2021 so
-              far, in reverse chronological order.
-            </p>
-            <a
-              href='#'
-              className='inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
-            >
-              Read more
-            </a>
+            {activeProject === id && (
+              <div className='absolute inset-0 flex flex-col items-center justify-center bg-black/60 hover:animate-curtainEnter'>
+                <h2 className='text-white text-lg font-semibold mb-4'>
+                  {title}
+                </h2>
+                <div className='flex space-x-4'>
+                  <button className='bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600'>
+                    Button 1
+                  </button>
+                  <button className='bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600'>
+                    Button 2
+                  </button>
+                </div>
+                <div className='flex justify-center w-full content-center h-12 mt-8 items-center bg-black/40 backdrop-blur-sm'>
+                  {skills}
+                </div>
+              </div>
+            )}
           </div>
-        </div>
+        </label>
       ))}
-    </>
+    </section>
   );
 }
 

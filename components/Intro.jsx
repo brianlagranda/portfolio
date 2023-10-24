@@ -2,6 +2,7 @@
 
 import Button from './Button';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 export default function Intro() {
   const router = useRouter();
@@ -17,15 +18,11 @@ export default function Intro() {
       <p className='my-8 text-xl'>
         1 year of experience developing web apps from scratch.
       </p>
-      <Button
-        text='Resume'
-        onClick={() =>
-          router.push(
-            'https://drive.google.com/file/d/1lRV-emE6UQbvedsJoysIiPhxSrlU258Z/view?usp=sharing'
-          )
-        }
-      ></Button>
+      <Link href='/resume.pdf'>
+        <Button text='Resume'></Button>
+      </Link>
       <div className='rounded-full  bg-emerald-500/80 blur-3xl h-20 w-20 flex self-end'></div>
     </section>
   );
 }
+
