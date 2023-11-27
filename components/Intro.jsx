@@ -12,11 +12,11 @@ export default function Intro() {
       <h1 className='text-6xl font-bold'>
         Brian Lagranda<span className='text-emerald-500 text-6xl'>.</span>
       </h1>
-      <h3 className='mt-2 text-lg'>FULLSTACK DEVELOPER</h3>
+      <h3 className='mt-2 text-lg'>FRONTEND DEVELOPER</h3>
       <h4 className='text-sm'>made in Argentina</h4>
 
       <p className='my-8 text-xl'>
-        1 year of experience developing web apps from scratch.
+        +1 year of experience developing web apps from scratch.
       </p>
       <Link href='/resume.pdf'>
         <Button text='Resume'></Button>
@@ -25,4 +25,3 @@ export default function Intro() {
     </section>
   );
 }
-
