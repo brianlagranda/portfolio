@@ -69,12 +69,10 @@ export default function NavBar() {
           className={`w-full md:w-3/4 md:mx-auto md:rounded-b fixed top-0 left-0 right-0 z-10 bg-black/40 backdrop-blur-sm animate-curtainEnter`}
         >
           <div className='flex justify-between items-center h-16'>
-            {/* LOGO */}
             <Link href='/' className='ml-4'>
               <h2 className='text-2xl text-emerald-900 font-bold'>Logo</h2>
             </Link>
 
-            {/* HAMBURGER BUTTON FOR MOBILE */}
             <div className='flex md:hidden mr-4'>
               <button onClick={() => setNavbar(!navbar)}>
                 {navbar ? (
@@ -98,7 +96,6 @@ export default function NavBar() {
             </div>
           </div>
 
-          {/* Navigation Links */}
           <Transition
             show={navbar}
             enter='transition-opacity duration-300'

@@ -9,7 +9,6 @@ import Link from 'next/link';
 import ScrollToTopButton from '../components/ScrollToTopButton';
 
 const sectionIds = [
-  { id: 'projects', label: 'Projects' },
   { id: 'skills', label: 'Skills' },
   { id: 'about', label: 'About' },
 ];
@@ -33,4 +32,3 @@ export default function Home() {
     </>
   );
 }
-
