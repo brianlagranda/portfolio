@@ -9,6 +9,9 @@ import gitIcon from '../public/img/icons/skills/git.svg';
 import jsIcon from '../public/img/icons/skills/js.svg';
 import reactIcon from '../public/img/icons/skills/react.svg';
 
+import tecnologicalImg from '../public/img/projects/tecnological.png';
+import calculatorImg from '../public/img/projects/calculator.png';
+
 const projects = [
   {
     id: crypto.randomUUID(),
@@ -19,7 +22,7 @@ const projects = [
       [bsIcon, 'Bootstrap'],
       [gitIcon, 'Git'],
     ],
-    img: '/img/projects/tecnological.png',
+    img: tecnologicalImg,
     alt: 'Ecommerce project Tecnological',
     urlDeploy: 'https://tecnological.vercel.app/',
     urlGithub: 'https://github.com/brianlagranda/tecnological',
@@ -33,7 +36,7 @@ const projects = [
       [bsIcon, 'Bootstrap'],
       [gitIcon, 'Git'],
     ],
-    img: '/img/projects/calculator.png',
+    img: calculatorImg,
     alt: 'Calculator App project',
     urlDeploy: 'https://calculator-chi-opal.vercel.app/',
     urlGithub: 'https://github.com/brianlagranda/calculator',
@@ -47,7 +50,7 @@ const projects = [
       [bsIcon, 'Bootstrap'],
       [gitIcon, 'Git'],
     ],
-    img: '/img/projects/tecnological.png',
+    img: tecnologicalImg,
     alt: 'Ecommerce project Tecnological',
     urlDeploy: 'urlDeploy',
     urlGithub: 'urlGithub',
@@ -74,7 +77,7 @@ export default function Projects() {
       {projects.map(({ id, title, skills, img, alt, urlDeploy, urlGithub }) => (
         <label
           key={id}
-          className={`group relative overflow-hidden rounded-md shadow-2xl`}
+          className={`group relative overflow-hidden rounded-lg bg-black shadow-2xl`}
         >
           <input
             type='checkbox'
@@ -82,11 +85,9 @@ export default function Projects() {
             checked={activeProject === id}
             onChange={() => handleCheckboxChange(id)}
           />
-          <div className={`project ${activeProject === id ? 'active' : ''}`}>
+          <div className={`${activeProject === id ? 'active' : ''}`}>
             <Image
-              width={500}
-              height={500}
-              className='rounded-lg ease-in-out duration-500 group-hover:rotate-6 group-hover:scale-125'
+              className='rounded-b-lg ease-in-out duration-500 group-hover:rotate-6 group-hover:scale-125'
               src={img}
               alt={alt}
             />
