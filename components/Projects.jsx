@@ -8,33 +8,23 @@ import bsIcon from '../public/img/icons/skills/bs.svg';
 import gitIcon from '../public/img/icons/skills/git.svg';
 import jsIcon from '../public/img/icons/skills/js.svg';
 import reactIcon from '../public/img/icons/skills/react.svg';
+import tsIcon from '../public/img/icons/skills/ts.svg';
+import htmlIcon from '../public/img/icons/skills/html5.svg';
+import cssIcon from '../public/img/icons/skills/css3.svg';
 
 import tecnologicalImg from '../public/img/projects/tecnological.png';
 import calculatorImg from '../public/img/projects/calculator.png';
+import administrateYa from '../public/img/projects/administrateYa.png';
 
 const projects = [
   {
     id: crypto.randomUUID(),
-    title: 'Tecnological',
-    skills: [
-      [reactIcon, 'React'],
-      [jsIcon, 'JavaScript'],
-      [bsIcon, 'Bootstrap'],
-      [gitIcon, 'Git'],
-    ],
-    img: tecnologicalImg,
-    alt: 'Ecommerce project Tecnological',
-    urlDeploy: 'https://tecnological.vercel.app/',
-    urlGithub: 'https://github.com/brianlagranda/tecnological',
-  },
-  {
-    id: crypto.randomUUID(),
     title: 'Calculator',
     skills: [
-      [reactIcon, 'React'],
-      [jsIcon, 'JavaScript'],
-      [bsIcon, 'Bootstrap'],
-      [gitIcon, 'Git'],
+      { src: reactIcon, alt: 'react' },
+      { src: tsIcon, alt: 'typeScript' },
+      { src: bsIcon, alt: 'bootstrap' },
+      { src: gitIcon, alt: 'git' },
     ],
     img: calculatorImg,
     alt: 'Calculator App project',
@@ -43,17 +33,32 @@ const projects = [
   },
   {
     id: crypto.randomUUID(),
-    title: 'Landing Page',
+    title: 'Tecnological',
     skills: [
-      [reactIcon, 'React'],
-      [jsIcon, 'JavaScript'],
-      [bsIcon, 'Bootstrap'],
-      [gitIcon, 'Git'],
+      { src: reactIcon, alt: 'react' },
+      { src: jsIcon, alt: 'javascript' },
+      { src: bsIcon, alt: 'bootstrap' },
+      { src: gitIcon, alt: 'git' },
     ],
     img: tecnologicalImg,
-    alt: 'Ecommerce project Tecnological',
-    urlDeploy: 'urlDeploy',
-    urlGithub: 'urlGithub',
+    alt: 'Ecommerce app project Tecnological',
+    urlDeploy: 'https://tecnological.vercel.app/',
+    urlGithub: 'https://github.com/brianlagranda/tecnological',
+  },
+  {
+    id: crypto.randomUUID(),
+    title: 'Expense Manager',
+    skills: [
+      { src: htmlIcon, alt: 'html5' },
+      { src: cssIcon, alt: 'css3' },
+      { src: jsIcon, alt: 'javascript' },
+      { src: bsIcon, alt: 'bootstrap' },
+      { src: gitIcon, alt: 'git' },
+    ],
+    img: administrateYa,
+    alt: 'Expense manager app project administrateya',
+    urlDeploy: 'https://administrate-ya.vercel.app/',
+    urlGithub: 'https://github.com/brianlagranda/AdministrateYa',
   },
 ];
 
@@ -77,7 +82,7 @@ export default function Projects() {
       {projects.map(({ id, title, skills, img, alt, urlDeploy, urlGithub }) => (
         <label
           key={id}
-          className={`group relative overflow-hidden rounded-lg bg-black shadow-2xl`}
+          className={`group relative overflow-hidden rounded-lg bg-black shadow-2xl h-60 flex justify-center`}
         >
           <input
             type='checkbox'
@@ -85,11 +90,12 @@ export default function Projects() {
             checked={activeProject === id}
             onChange={() => handleCheckboxChange(id)}
           />
-          <div className={`${activeProject === id ? 'active' : ''}`}>
+          <div className={`flex h-60 ${activeProject === id ? 'active' : ''}`}>
             <Image
               className='rounded-b-lg ease-in-out duration-500 group-hover:rotate-6 group-hover:scale-125'
               src={img}
               alt={alt}
+              style={{ objectFit: 'cover' }}
             />
             {activeProject === id && (
               <div className='absolute inset-0 flex flex-col items-center justify-center bg-black/60 hover:animate-curtainEnter'>
@@ -130,8 +136,8 @@ export default function Projects() {
                         <Image
                           priority
                           key={index}
-                          src={skill[0]}
-                          alt={skill[1]}
+                          src={skill.src}
+                          alt={skill.alt}
                           className='w-full h-full object-contain'
                         />
                       </div>
