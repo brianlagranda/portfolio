@@ -1,6 +1,7 @@
 import NavBar from '../components/NavBar';
 import Intro from '../components/Intro';
 import Projects from '../components/Projects';
+import Skills from '@/components/Skills';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
 
@@ -8,10 +9,7 @@ import Link from 'next/link';
 
 import ScrollToTopButton from '../components/ScrollToTopButton';
 
-const sectionIds = [
-  { id: 'skills', label: 'Skills' },
-  { id: 'about', label: 'About' },
-];
+const sectionIds = [{ id: 'about', label: 'About' }];
 
 export default function Home() {
   return (
@@ -19,6 +17,7 @@ export default function Home() {
       <NavBar />
       <Intro />
       <Projects />
+      <Skills />
 
       {sectionIds.map(({ id, label }) => (
         <section key={id} id={id} className='h-screen flex'>
