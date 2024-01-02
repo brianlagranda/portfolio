@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 import bsIcon from '../public/img/icons/skills/bs.svg';
 import gitIcon from '../public/img/icons/skills/git.svg';
@@ -63,15 +63,7 @@ const projects = [
 ];
 
 export default function Projects() {
-  const [activeProject, setActiveProject] = useState(null);
-
-  const handleCheckboxChange = (id) => {
-    if (activeProject === id) {
-      setActiveProject(null);
-    } else {
-      setActiveProject(id);
-    }
-  };
+  const [selectedProject, setSelectedProject] = useState(null);
 
   return (
     <section
@@ -83,70 +75,64 @@ export default function Projects() {
         <label
           key={id}
           className={`group relative overflow-hidden rounded-lg bg-black shadow-2xl h-60 flex justify-center`}
+          onClick={() => setSelectedProject(selectedProject === id ? null : id)}
         >
-          <input
-            type='checkbox'
-            className='hidden h-full'
-            checked={activeProject === id}
-            onChange={() => handleCheckboxChange(id)}
+          <Image
+            className='rounded-b-lg ease-in-out duration-500 group-hover:rotate-6 group-hover:scale-125'
+            src={img}
+            alt={alt}
+            style={{ objectFit: 'cover' }}
           />
-          <div className={`flex h-60 ${activeProject === id ? 'active' : ''}`}>
-            <Image
-              className='rounded-b-lg ease-in-out duration-500 group-hover:rotate-6 group-hover:scale-125'
-              src={img}
-              alt={alt}
-              style={{ objectFit: 'cover' }}
-            />
-            {activeProject === id && (
-              <div className='absolute inset-0 flex flex-col items-center justify-center bg-black/60 hover:animate-curtainEnter'>
-                <h2 className='text-white text-3xl font-semibold mb-4'>
-                  {title}
-                </h2>
-                <div className='flex gap-8 filter invert'>
-                  <div className='bg-black/60 p-1 rounded-full'>
-                    <Link href={urlGithub}>
-                      <Image
-                        src='/img/icons/github.svg'
-                        width='0'
-                        height='0'
-                        alt='Github icon'
-                        className='bg-white rounded-full p-1 w-12 h-auto hover:scale-125 hover:invert transition-all'
-                      />
-                    </Link>
-                  </div>
-                  <div className='bg-black/60 p-1 rounded-full'>
-                    <Link href={urlDeploy}>
-                      <Image
-                        src='/img/icons/link.svg'
-                        width='0'
-                        height='0'
-                        alt='Github icon'
-                        className='bg-white rounded-full p-1 w-12 h-12 hover:scale-125 hover:invert transition-all'
-                      />
-                    </Link>
-                  </div>
+          {selectedProject === id && (
+            <div className='absolute inset-0 flex flex-col items-center justify-center bg-black/60 animate-curtainEnter'>
+              <h2 className='text-white text-3xl font-semibold mb-4'>
+                {title}
+              </h2>
+              <div className='flex gap-8 filter invert'>
+                <div className='bg-black/60 p-1 rounded-full'>
+                  <Link href={urlGithub}>
+                    <Image
+                      src='/img/icons/github.svg'
+                      width='0'
+                      height='0'
+                      alt='Github icon'
+                      className='bg-white rounded-full p-1 w-12 h-auto hover:scale-125 hover:invert transition-all'
+                      priority='true'
+                    />
+                  </Link>
                 </div>
-                <div className='flex justify-center w-full content-center h-12 mt-3 items-center bg-black/40 backdrop-blur-sm gap-2'>
-                  {skills.map((skill, index) => {
-                    return (
-                      <div
-                        key={index}
-                        className='w-8 h-8 overflow-hidden filter invert'
-                      >
-                        <Image
-                          priority
-                          key={index}
-                          src={skill.src}
-                          alt={skill.alt}
-                          className='w-full h-full object-contain'
-                        />
-                      </div>
-                    );
-                  })}
+                <div className='bg-black/60 p-1 rounded-full'>
+                  <Link href={urlDeploy}>
+                    <Image
+                      src='/img/icons/link.svg'
+                      width='0'
+                      height='0'
+                      alt='Github icon'
+                      className='bg-white rounded-full p-1 w-12 h-12 hover:scale-125 hover:invert transition-all'
+                    />
+                  </Link>
                 </div>
               </div>
-            )}
-          </div>
+              <div className='flex justify-center w-full content-center h-12 mt-3 items-center bg-black/40 backdrop-blur-sm gap-2'>
+                {skills.map((skill, index) => {
+                  return (
+                    <div
+                      key={index}
+                      className='w-8 h-8 overflow-hidden filter invert'
+                    >
+                      <Image
+                        priority
+                        key={index}
+                        src={skill.src}
+                        alt={skill.alt}
+                        className='w-full h-full object-contain'
+                      />
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
         </label>
       ))}
     </section>
