@@ -4,17 +4,17 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState } from 'react';
 
-import bsIcon from '../public/img/icons/skills/bs.svg';
-import gitIcon from '../public/img/icons/skills/git.svg';
-import jsIcon from '../public/img/icons/skills/js.svg';
-import reactIcon from '../public/img/icons/skills/react.svg';
-import tsIcon from '../public/img/icons/skills/ts.svg';
-import htmlIcon from '../public/img/icons/skills/html5.svg';
-import cssIcon from '../public/img/icons/skills/css3.svg';
+import bsIcon from '/public/img/icons/skills/bs.svg';
+import gitIcon from '/public/img/icons/skills/git.svg';
+import jsIcon from '/public/img/icons/skills/js.svg';
+import reactIcon from '/public/img/icons/skills/react.svg';
+import tsIcon from '/public/img/icons/skills/ts.svg';
+import htmlIcon from '/public/img/icons/skills/html5.svg';
+import cssIcon from '/public/img/icons/skills/css3.svg';
 
-import tecnologicalImg from '../public/img/projects/tecnological.png';
-import calculatorImg from '../public/img/projects/calculator.png';
-import administrateYa from '../public/img/projects/administrateYa.png';
+import tecnologicalImg from '/public/img/projects/tecnological.png';
+import calculatorImg from '/public/img/projects/calculator.png';
+import administrateYa from '/public/img/projects/administrateYa.png';
 
 const projects = [
   {
