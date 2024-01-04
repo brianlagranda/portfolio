@@ -68,17 +68,19 @@ export default function Projects() {
   return (
     <section
       id='projects'
-      className='w-full mt-24 flex flex-wrap gap-10 justify-center'
+      className='w-full mt-24 flex flex-wrap flex-col items-center mx-auto sm:mt-48 gap-10 justify-center sm:w-3/4'
     >
       <h2 className='m-auto text-5xl text-emerald-900'>Projects</h2>
       {projects.map(({ id, title, skills, img, alt, urlDeploy, urlGithub }) => (
         <label
           key={id}
-          className={`group relative overflow-hidden rounded-lg bg-black shadow-2xl h-60 flex justify-center`}
+          className={`group relative overflow-hidden rounded-lg bg-black shadow-2xl h-60 sm:h-72 sm:w-3/4 flex justify-center`}
           onClick={() => setSelectedProject(selectedProject === id ? null : id)}
+          onMouseEnter={() => setSelectedProject(id)}
+          onMouseLeave={() => setSelectedProject(null)}
         >
           <Image
-            className='rounded-b-lg ease-in-out duration-500 group-hover:rotate-6 group-hover:scale-125'
+            className='rounded-b-lg ease-in-out duration-500 group-hover:rotate-6 group-hover:scale-125 sm:group-hover:scale-150'
             src={img}
             alt={alt}
             style={{ objectFit: 'cover' }}

@@ -10,7 +10,7 @@ export default function ContactLinks() {
           width='0'
           height='0'
           alt='Linkedin icon'
-          className='w-10 h-auto hover:scale-110'
+          className='w-10 h-auto hover:scale-125 transition-all duration-300'
         />
       </Link>
 
@@ -20,7 +20,7 @@ export default function ContactLinks() {
           width='0'
           height='0'
           alt='Github icon'
-          className='w-10 h-auto hover:scale-110'
+          className='w-10 h-auto hover:scale-125 transition-all duration-300'
         />
       </Link>
 
@@ -30,10 +30,9 @@ export default function ContactLinks() {
           width='0'
           height='0'
           alt='Mail icon'
-          className='w-10 h-auto hover:scale-110'
+          className='w-10 h-auto hover:scale-125 transition-all duration-300'
         />
       </Link>
     </>
   );
 }
-

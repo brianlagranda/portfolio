@@ -106,7 +106,7 @@ export default function NavBar() {
             leaveTo='opacity-0'
           >
             <ul
-              className={`h-screen flex flex-col justify-evenly items-center text-white text-xl`}
+              className={`h-screen flex flex-col justify-evenly items-center text-white text-xl animate-curtainEnter`}
             >
               {links.map(({ label, route }) => (
                 <li
