@@ -10,11 +10,18 @@ export default function Intro() {
       <h1 className='text-6xl sm:text-9xl font-bold'>
         Brian Lagranda<span className='text-emerald-500 text-6xl'>.</span>
       </h1>
-      <h3 className='mt-2 text-lg sm:text-2xl sm:px-2'>Frontend developer</h3>
-      <h4 className='text-sm sm:text-md px-2'>based in Argentina</h4>
+      <h3 className='mt-2 text-lg sm:text-2xl px-1 sm:px-2'>
+        Frontend developer
+      </h3>
+      <h4 className='text-sm sm:text-md px-1 sm:px-2 text-black/70'>
+        based in Argentina
+      </h4>
 
-      <p className='my-8 text-lg sm:text-2xl'>
-        <strong>+1</strong> year of experience developing web apps from scratch.
+      <p className='my-8 text-lg sm:text-2xl flex gap-2'>
+        <strong className='animate-bounce my-1.5 sm:my-1 font-bold transition-all text-xl sm:text-3xl'>
+          +1
+        </strong>{' '}
+        year of experience developing web apps from scratch.
       </p>
       <Link href='/resume.pdf'>
         <Button text='Resume'></Button>
