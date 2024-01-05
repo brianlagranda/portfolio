@@ -70,8 +70,27 @@ export default function NavBar() {
         >
           <div className='flex justify-between items-center h-16'>
             <Link href='/' className='ml-4'>
-              <h2 className='text-2xl text-emerald-900 font-bold'>Logo</h2>
+              <Image
+                src='/img/logo.png'
+                width='64'
+                height='64'
+                alt='brand logo'
+                className='w-auto h-auto'
+              />
             </Link>
+
+            <ul
+              className={`flex justify-evenly items-center text-white text-xl animate-curtainEnter`}
+            >
+              {links.map(({ label, route }) => (
+                <li
+                  key={route}
+                  className='flex py-3 md:px-6 w-32 justify-center hover:text-black hover:bg-transparent hover:border-black'
+                >
+                  <Link href={route}>{label}</Link>
+                </li>
+              ))}
+            </ul>
 
             <div className='flex md:hidden mr-4'>
               <button onClick={() => setNavbar(!navbar)}>
@@ -80,7 +99,7 @@ export default function NavBar() {
                     src='/img/icons/xmark-icon.svg'
                     width='0'
                     height='0'
-                    alt='logo'
+                    alt='close menu icon'
                     className='w-6 h-auto'
                   />
                 ) : (
@@ -88,7 +107,7 @@ export default function NavBar() {
                     src='/img/icons/menu-icon.svg'
                     width='0'
                     height='0'
-                    alt='logo'
+                    alt='open menu icon'
                     className='w-6 h-auto'
                   />
                 )}
