@@ -23,7 +23,7 @@ export default function Intro() {
         </strong>{' '}
         year of experience developing web apps from scratch.
       </p>
-      <Link href='/resume.pdf'>
+      <Link href='/Brian Lagranda - Frontend Developer - Resume.pdf'>
         <Button text='Resume'></Button>
       </Link>
       <div className='rounded-full bg-emerald-500/80 blur-3xl h-20 w-20 flex self-end'></div>
