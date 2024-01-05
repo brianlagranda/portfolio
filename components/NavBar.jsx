@@ -80,7 +80,7 @@ export default function NavBar() {
             </Link>
 
             <ul
-              className={`flex justify-evenly items-center text-white text-xl animate-curtainEnter`}
+              className={`hidden md:flex justify-evenly items-center text-white text-xl animate-curtainEnter`}
             >
               {links.map(({ label, route }) => (
                 <li
