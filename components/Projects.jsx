@@ -117,7 +117,7 @@ export default function Projects() {
                         width='0'
                         height='0'
                         alt='Github icon'
-                        className='bg-white rounded-full p-1 w-12 h-auto hover:scale-125 hover:invert transition-all'
+                        className='bg-white rounded-full p-1 w-12 h-full hover:scale-125 hover:invert transition-all'
                         priority='true'
                       />
                     </Link>
@@ -129,7 +129,7 @@ export default function Projects() {
                         width='0'
                         height='0'
                         alt='Github icon'
-                        className='bg-white rounded-full p-1 w-12 h-12 hover:scale-125 hover:invert transition-all'
+                        className='bg-white rounded-full p-1 w-12 h-full hover:scale-125 hover:invert transition-all'
                       />
                     </Link>
                   </div>
