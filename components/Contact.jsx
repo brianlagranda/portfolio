@@ -8,7 +8,7 @@ export default function Contact() {
         touch<span className='text-emerald-500'>.</span>
       </h2>
 
-      <div className='flex items-center justify-evenly md:justify-center gap-32 h-24 pt-20 mb-20'>
+      <div className='flex items-center justify-center gap-x-14 md:gap-32 h-24 pt-20 mb-20'>
         <ContactLinks />
       </div>
     </section>
