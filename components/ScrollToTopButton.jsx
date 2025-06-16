@@ -1,6 +1,5 @@
-'use client';
-
-import { useEffect, useState } from 'react';
+"use client";
+import { useEffect, useState } from "react";
 
 const SCROLL_SPEED = 45;
 
@@ -29,10 +28,10 @@ const ScrollToTopButton = () => {
       checkScrollTop();
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -40,21 +39,21 @@ const ScrollToTopButton = () => {
     <button
       onClick={scrollToTop}
       className={`${
-        isVisible ? `opacity-90 animate-bounceTwice shadow-md` : 'opacity-0'
-      } fixed bottom-5 right-5 z-50 md:right-32 lg:right-44 xl:right-52 2xl:right-60 p-3 bg-black/90 hover:bg-black text-white rounded-full hover:invert border border-transparent hover:border-white transition-all hover:scale-100`}
+        isVisible ? `opacity-90 animate-bounceTwice shadow-md` : "opacity-0"
+      } fixed bottom-5 right-5 z-50 md:right-32 lg:right-44 xl:right-52 2xl:right-60 p-3 bg-black/90 hover:bg-black text-white rounded-full hover:invert border border-transparent hover:border-white transition-all hover:scale-100 active:scale-95`}
     >
       <svg
-        xmlns='http://www.w3.org/2000/svg'
-        className='h-5 w-5'
-        fill='none'
-        viewBox='0 0 24 24'
-        stroke='currentColor'
+        xmlns="http://www.w3.org/2000/svg"
+        className="h-5 w-5"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
       >
         <path
-          strokeLinecap='round'
-          strokeLinejoin='round'
-          strokeWidth='3'
-          d='M5 10l7-7m0 0l7 7m-7-7v18'
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="3"
+          d="M5 10l7-7m0 0l7 7m-7-7v18"
         />
       </svg>
     </button>
